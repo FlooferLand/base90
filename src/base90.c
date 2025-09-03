@@ -48,3 +48,7 @@ int base90_find(char* text) {
         free(out);
     }
 }
+
+char* base90_get_charset() {
+    return base90_chars.data;
+}

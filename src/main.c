@@ -9,8 +9,9 @@ bool cli_clean = false;
 
 int main(const int argc, char* args[]) {
     cli_init(argc, args);
-    cli_register_command("get", "Example: Use `get 123585` to get the characters for 'owo'");
+    cli_register_command("get", "Example: Use `get 62927` to get the characters for 'owo'");
     cli_register_command("find", "Example: Use `find owo` to find the index for 'owo'");
+    cli_register_command("get_charset", "Gets the character set");
     cli_register_flag("clean", "Removes user-facing text, recommended if you're using this as a CLI app.");
     if (!cli_check_init()) {
         return -1;
@@ -56,6 +57,13 @@ int main(const int argc, char* args[]) {
             const int found = base90_find(find.arg0);
             printf("find: '%s' is %d\n", find.arg0, found);
         }
+        return 0;
+    }
+
+    // Get charset command
+    struct CommandResult get_charset = cli_get_command("get_charset");
+    if (get_charset.ok) {
+        printf("%s", base90_get_charset());
         return 0;
     }
 

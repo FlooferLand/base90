@@ -4,5 +4,6 @@
 void base90_init();
 char* base90_get_index(int num);
 int base90_find(char* text);
+char* base90_get_charset();
 
 #endif
